@@ -1,0 +1,11 @@
+# Ignored files
+.DS_Store
+*.un~
+*.gitignore~
+*.gitignore.un~
+*.pyc
+*.swp
+.idea/
+*.log
+*.iml
+*.tsv

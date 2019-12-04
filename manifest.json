@@ -1,0 +1,54 @@
+{
+    "name": "Dictionary",
+    "version": "1.0",
+    "description": "Shows meanings of words",
+
+
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+
+    "background":
+    {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "options_page": "options.html",
+
+    "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/get_started16.png",
+      "32": "images/get_started32.png",
+      "48": "images/get_started48.png",
+      "128": "images/get_started128.png"
+    }
+    },
+
+    "icons": {
+    "16": "images/get_started16.png",
+    "32": "images/get_started32.png",
+    "48": "images/get_started48.png",
+    "128": "images/get_started128.png"
+    },
+
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            // These are operation files
+            "js": [
+                "lib.js",
+                "data.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+
+    // Data set
+    "web_accessible_resources": [
+        "data/data.tsv"
+    ],
+
+    "manifest_version": 2
+}
