@@ -482,6 +482,11 @@
 		getPortionReplacementNode: function(portion, match) {
 
 			var replacement = this.options.replace || '$&';
+            // CUSTOM
+            var id = this.options.id;
+			var title = this.options.title;
+            var style = this.options.style;
+
 			var wrapper = this.options.wrap;
 			var wrapperClass = this.options.wrapClass;
 
@@ -505,6 +510,21 @@
  			if (el && wrapperClass) {
 				el.className = wrapperClass;
 			}
+
+            // CUSTOM: id
+            if (el && id) {
+                el.id = id;
+            }
+
+            // CUSTOM: title
+            if (el && id) {
+                el.title = title;
+            }
+
+            // CUSTOM: style
+            if (el && id) {
+                el.style.cssText = style;
+            }
 
 			replacement = doc.createTextNode(
 				this.prepareReplacementString(

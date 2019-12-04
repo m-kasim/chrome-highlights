@@ -67,7 +67,7 @@ function search_words(parameter)
         //console.log("[DEBUG] Without emojis:", search_word);
 
         // Strip special characters
-        let regex_special_characters = /[\(\)*|]+/g
+        let regex_special_characters = /[\(\)*|?]+/g
         search_word = search_word.replace(regex_special_characters, '');
 
         // Strip whitespace
@@ -87,21 +87,29 @@ function search_words(parameter)
         // i - case insensitive
         let re = new RegExp("\\b" + search_word + "\\b", "gi");
         //let to = '<mark title="🇧🇬 ' + html_dictionary[i][1] + '. \n ☝️Definition: ' + html_dictionary[i][2] +'" style="cursor: pointer;">✨'+ search_word +'</mark>';
-        let to = search_word + "(" + html_dictionary[i][1] + ")";
+        let to = search_word;
 
         // Lib: Replacer
+
         findAndReplaceDOMText(document.body, {
-          find: re,
-          replace: to,
-          wrap: 'mark'
+            find: re,
+            replace: to,
+            wrap: 'mark',
+            wrapClass: 'extension_dictionary-word',
+            id: 'extension_' + search_word,
+            title: '🇧🇬 ' + html_dictionary[i][1] + '\n\n ☝️DEFINITION: ' + html_dictionary[i][2] + '\n\n 🚴‍♂️ EXAMPLE: ' + html_dictionary[i][3],
+            style: 'cursor: pointer'
         });
+
 
         //document.body.innerHTML = document.body.innerHTML.replace(re, to);
     }
 
-    // UNUSED
-    //document.body.innerHTML = document.body.innerHTML.replace(/renege/g, 'test');
-    //document.body.textContent = document.body.textContent.replace('renege', 'TEST');
-    //document.write(html_original);
-    //document.body.parentElement.textContent.replace(re, to);
 }
+
+// UNUSED
+//document.body.style.backgroundColor = 'red';
+//document.body.innerHTML = document.body.innerHTML.replace(/renege/g, 'test');
+//document.body.textContent = document.body.textContent.replace('renege', 'TEST');
+//document.write(html_original);
+//document.body.parentElement.textContent.replace(re, to);
